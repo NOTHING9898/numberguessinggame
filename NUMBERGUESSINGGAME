@@ -1,0 +1,36 @@
+import random
+
+secret = random.randint(1, 50)
+attempts = 0
+
+print("Guess a number between 1 and 50")
+print("You have 5 chances ❤️❤️❤️❤️❤️")
+
+while attempts < 5:
+    guess = int(input("Enter your guess: "))
+    attempts += 1
+
+    if guess == secret:
+        print("You win!")
+        break #break the loop here
+    else:
+        diff = abs(guess-secret)  #Calculate the absolute difference between secret and guess
+
+        if diff > 20:
+            print("The difference is more than 20")
+        elif diff > 10:
+            print("The difference is more than 10")
+        elif diff > 5:
+            print("The difference is more than 5")
+        else:
+            print("You are very close")
+
+        # show remaining hearts
+        print("Lives left:", end=" ")
+        for i in range(5 - attempts):
+            print("❤️", end=" ")
+        print()
+
+# if all chances are over
+if attempts==5 and guess!=secret:  #Fill the losing condition -> If all 5 attempts are over and guess isnot equal to secret
+    print("Game Over! The number was", secret)
